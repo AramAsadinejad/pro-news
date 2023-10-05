@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+        {% endfor %}
+    {% endif %}
+<div class="all-contents">
+    <div class="sidemenu"></div>
+    <div class="contents">
+      {% for post in posts %}
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{post.image.url}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.reporter}}</p>
+          <p class="card-text"><small class="text-muted">{{post.date}}</small></p>
+          {% if user.is_superuser %}
+        <a href="{% url 'delete' post.id %}" class="card-link btn-danger">Delete</a>
+        <a href="{% url 'update' post.id %}" class="card-link btn-warning">Update</a>
+        {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    </div>
+{% else %}
+<h1>PLEASE LOGIN FIRST</h1>
+{% endif %}
+{% endblock %}

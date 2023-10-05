@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block content %}
+{%if user.is_superuser %}
+<div class="container">
+    <br><br>
+    <h1>Update NEWS</h1>
+    <br><br><br>
+    <div class="container">
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{myform.as_p}}
+        <input type="submit" value="Update" class="btn btn-warning">
+      </form>
+      
+    </div>  
+</div>
+{% else %}
+<h1>U CAN NOT ACCESS TO THIS PAGE</h1>
+{% endif %}
+{% endblock%}

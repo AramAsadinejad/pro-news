@@ -1,0 +1,21 @@
+.all-contents{
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    grid-template-areas: "contents sidem";
+    gap: 15px;
+}
+
+
+.contents{
+    
+    width: 400px;
+    grid-area: contents;
+    min-height: 600px;
+}
+
+.sidemenu{
+    padding: 20px;
+    grid-area: sidem;
+}
+
+
